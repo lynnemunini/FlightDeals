@@ -34,4 +34,4 @@ for destination in sheet_data:
             message += f"\nFlight has {flight.stop_overs} stop over, via {flight.via_city}."
             print(message)
 
-        notification_manager.send_sms(message)
+        notification_manager.send_email(message)
