@@ -31,4 +31,4 @@ class DataManager:
                 url=f"{SHEETY_FLIGHT_ENDPOINT}/{city['id']}",
                 json=new_data, headers=authorization_header
             )
-            # print(response.text)
+            print(response.text)
