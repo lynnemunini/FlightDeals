@@ -25,7 +25,9 @@ for destination in sheet_data:
         from_time=tomorrow,
         to_time=six_month_from_today
     )
-    if flight is not None and flight.price < destination["lowestPrice"]:
+    if flight is None:
+        continue
+    if flight.price < destination["lowestPrice"]:
         message = f"Low price alert! Only Ksh {flight.price} to fly from " \
                   f"{flight.origin_city}-{flight.origin_airport} to " \
                   f"{flight.destination_city}-{flight.destination_airport}, from {flight.out_date} " \
@@ -33,5 +35,7 @@ for destination in sheet_data:
         if flight.stop_overs > 0:
             message += f"\nFlight has {flight.stop_overs} stop over, via {flight.via_city}."
             print(message)
+        link = f"https://www.google.co.uk/flights?hl=en#flt={flight.origin_airport}.{flight.destination_airport}." \
+               f"{flight.out_date}*{flight.destination_airport}.{flight.origin_airport}.{flight.return_date}"
 
-        notification_manager.send_email(message)
+        notification_manager.send_email(message, link)
