@@ -54,7 +54,7 @@ class FlightSearch:
                     params=query,
                 )
                 data = response.json()["data"][0]
-                pprint(data)
+                # pprint(data)
                 flight_data = FlightData(
                     price=data["price"],
                     origin_city=data["route"][0]["cityFrom"],

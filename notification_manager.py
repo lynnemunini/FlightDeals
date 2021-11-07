@@ -14,17 +14,17 @@ user_data = data_manager.get_customer_emails()
 
 class NotificationManager:
 
-    # def __init__(self):
-    #     self.client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
+    def __init__(self):
+        self.client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
-    # def send_sms(self, message):
-    #     message = self.client.messages.create(
-    #         body=message,
-    #         from_=TWILIO_NUMBER,
-    #         to=TWILIO_VERIFIED_NUMBER,
-    #     )
-    #     # Prints if successfully sent.
-    #     print(message.sid)
+    def send_sms(self, message):
+        message = self.client.messages.create(
+            body=message,
+            from_=TWILIO_NUMBER,
+            to=TWILIO_VERIFIED_NUMBER,
+        )
+        # Prints if successfully sent.
+        print(message.sid)
 
     def send_email(self, message, google_flight_link):
         with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
